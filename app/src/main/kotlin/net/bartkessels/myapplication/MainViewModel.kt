@@ -6,10 +6,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class MainViewModel: ViewModel() {
-    private val _displayText = MutableStateFlow("Hello World!")
+    private val _displayText = MutableStateFlow<MainState>(MainState.Uninitialized)
     val displayText = _displayText.asStateFlow()
 
     fun updateText() {
-        _displayText.update { "Hello again!" }
+        _displayText.update { MainState.Updated }
     }
+}
+
+sealed interface MainState {
+    data object Uninitialized: MainState
+    data object Updated: MainState
 }

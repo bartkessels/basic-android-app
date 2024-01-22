@@ -1,18 +1,19 @@
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import net.bartkessels.myapplication.MainViewModel
 
 @Composable
 fun Main(
     viewModel: MainViewModel
 ) {
-    BasicText(
-        text = viewModel.displayText.collectAsState().value,
-        modifier = Modifier.clickable(
-            onClick = viewModel::updateText
-        )
-    )
+    Column {
+        Text(viewModel.displayText.collectAsState().value, color = Color.White)
+        Button(onClick = viewModel::updateText) {
+            Text("Click me")
+        }
+    }
 }

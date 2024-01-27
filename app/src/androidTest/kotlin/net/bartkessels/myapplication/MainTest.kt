@@ -48,7 +48,7 @@ internal class MainTest {
 
     @Test
     fun shouldCallOnButtonClickWhenTheButtonIsPressed() {
-        // Arrange & Act
+        // Act
         var isOnButtonClickCalled = false
         composeTestRule.setContent {
             MainInternal(
@@ -57,11 +57,12 @@ internal class MainTest {
             )
         }
 
-        // Assert
+        // Act
         composeTestRule
             .onNodeWithText(context.getString(R.string.update_text_button))
             .performClick()
 
+        // Assert
         Assert.assertTrue(isOnButtonClickCalled)
     }
 }

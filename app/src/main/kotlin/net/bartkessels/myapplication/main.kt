@@ -20,7 +20,7 @@ fun Main(
 }
 
 @Composable
-private fun MainInternal(
+internal fun MainInternal(
     state: MainState,
     onButtonClick: () -> Unit
 ) {

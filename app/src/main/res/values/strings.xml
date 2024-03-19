@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="uninitialized_text">Hello world!</string>
-    <string name="updated_text">Hello again!</string>
+    <plurals name="updated_text">
+        <item quantity="one">You have clicked 1 time</item>
+        <item quantity="other">You have clicked %d times</item>
+    </plurals>
     <string name="update_text_button">Click me</string>
 </resources>

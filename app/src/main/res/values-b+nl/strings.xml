@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="uninitialized_text">Hallo wereld!</string>
-    <string name="updated_text">Nogmaals hallo!</string>
+    <plurals name="updated_text">
+        <item quantity="one">Je hebt 1 keer geklikt</item>
+        <item quantity="other">Je hebt %d keer geklikt</item>
+    </plurals>
     <string name="update_text_button">Klik mij</string>
 </resources>

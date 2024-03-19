@@ -5,6 +5,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -24,12 +25,12 @@ private fun MainInternal(
     onButtonClick: () -> Unit
 ) {
     val textToDisplay = when (state) {
-        MainState.Uninitialized -> R.string.uninitialized_text
-        MainState.Updated -> R.string.updated_text
+        MainState.Uninitialized -> stringResource(R.string.uninitialized_text)
+        is MainState.Updated -> pluralStringResource(R.plurals.updated_text, state.clickCount)
     }
 
     Column {
-        Text(stringResource(textToDisplay))
+        Text(textToDisplay)
         Button(onClick = onButtonClick) {
             Text(stringResource(R.string.update_text_button))
         }

@@ -31,18 +31,37 @@ internal class MainTest {
     }
 
     @Test
-    fun shouldDisplayHelloAgainWhenTheMainStateIsUpdated() {
+    fun shouldDisplayYouHaveClickedOnceWhenTheMainStateIsUpdatedWithAClickCountOfOne() {
         // Arrange & Act
         composeTestRule.setContent {
             MainInternal(
-                state = MainState.Updated,
+                state = MainState.Updated(clickCount = 1),
                 onButtonClick = { }
             )
         }
 
         // Assert
         composeTestRule
-            .onNodeWithText(context.getString(R.string.updated_text))
+            .onNodeWithText("You have clicked 1 time")
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun shouldDisplayYouHaveClickedXTimesWhenTheMainStateIsUpdatedWithAClickCountOfFive() {
+        // Arrange
+        val noClicks = 5
+
+        // Act
+        composeTestRule.setContent {
+            MainInternal(
+                state = MainState.Updated(clickCount = noClicks),
+                onButtonClick = { }
+            )
+        }
+
+        // Assert
+        composeTestRule
+            .onNodeWithText("You have clicked 5 times")
             .assertIsDisplayed()
     }
 
